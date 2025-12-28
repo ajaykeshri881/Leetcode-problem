@@ -23,7 +23,6 @@ class Solution {
 }
 
 
-
 // class Solution {
 //     public int countNegatives(int[][] arr) {
 //         int n=arr.length;
