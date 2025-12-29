@@ -1,7 +1,6 @@
 class Solution {
     Map<String, List<Character>> map = new HashMap<>();
     Set<String> failed = new HashSet<>();
-
     public boolean pyramidTransition(String bottom, List<String> allowed) {
         for (String s : allowed) {
             String key = s.substring(0, 2);
