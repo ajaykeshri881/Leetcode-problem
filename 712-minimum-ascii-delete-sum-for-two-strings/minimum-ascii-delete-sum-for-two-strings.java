@@ -4,7 +4,6 @@ class Solution {
         int n = s2.length();
 
         int[][] dp = new int[m + 1][n + 1];
-
         for (int i = m - 1; i >= 0; i--) {
             dp[i][n] = dp[i + 1][n] + s1.charAt(i);
         }
@@ -23,7 +22,6 @@ class Solution {
                 }
             }
         }
-
         return dp[0][0];
     }
 }
