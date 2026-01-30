@@ -5,8 +5,6 @@ class Trie {
 
 class Solution {
     private static final int INF = Integer.MAX_VALUE / 2;
-    
- 
     private int add(Trie node, String word, int[] index) {
         for (char ch : word.toCharArray()) {
             int i = ch - 'a';
@@ -29,7 +27,6 @@ class Solution {
         
         Trie root = new Trie();
         int[] nextId = {-1};  
-        
         int maxNodes = m * 2;
         int[][] dist = new int[maxNodes][maxNodes];
         
