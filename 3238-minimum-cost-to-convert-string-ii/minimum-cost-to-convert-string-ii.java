@@ -54,8 +54,7 @@ class Solution {
                 }
             }
         }
-        
-     
+         
         long[] dp = new long[n];
         Arrays.fill(dp, -1);
         
@@ -66,7 +65,6 @@ class Solution {
                 continue; 
             }
             
-        
             if (source.charAt(j) == target.charAt(j)) {
                 if (dp[j] == -1) {
                     dp[j] = base;
@@ -81,16 +79,12 @@ class Solution {
             for (int i = j; i < n; i++) {
                 char srcChar = source.charAt(i);
                 char tgtChar = target.charAt(i);
-                
-          
                 nodeSrc = nodeSrc.child[srcChar - 'a'];
-              
                 nodeTgt = nodeTgt.child[tgtChar - 'a'];
                 
                 if (nodeSrc == null || nodeTgt == null) {
                     break; 
                 }
-                
                 if (nodeSrc.id != -1 && nodeTgt.id != -1) {
                     int costTransform = dist[nodeSrc.id][nodeTgt.id];
                     if (costTransform != INF) {
@@ -101,8 +95,7 @@ class Solution {
                     }
                 }
             }
-        }
-        
+        } 
         return dp[n - 1];
     }
 }
