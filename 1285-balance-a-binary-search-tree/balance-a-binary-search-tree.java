@@ -24,5 +24,4 @@ class Solution {
         node.right = build(list, mid + 1, end);
         return node;
     }
-
 }
