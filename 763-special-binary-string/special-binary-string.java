@@ -1,25 +1,22 @@
 class Solution {
     public String makeLargestSpecial(String s) {
-        int count = 0, start = 0;
-        List<String> parts = new ArrayList<>();
+        if (s.length() <= 2) return s;
 
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '1') count++;
-            else count--;
+        char[] arr = s.toCharArray();
+        List<String> parts = new ArrayList<>(s.length() / 2);
+
+        int count = 0, start = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            count += arr[i] == '1' ? 1 : -1;
 
             if (count == 0) {
-                String inner = makeLargestSpecial(s.substring(start + 1, i));
-                parts.add("1" + inner + "0");
+                parts.add("1" + makeLargestSpecial(s.substring(start + 1, i)) + "0");
                 start = i + 1;
             }
         }
 
-        Collections.sort(parts, Collections.reverseOrder());
-
-        StringBuilder result = new StringBuilder();
-        for (String p : parts) {
-            result.append(p);
-        }
-        return result.toString();
+        parts.sort(Collections.reverseOrder());
+        return String.join("", parts);
     }
 }
