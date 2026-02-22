@@ -14,10 +14,13 @@ class Solution {
             n >>= 1;  // right shift
             position++;
         }
-
         return maxDist;
     }
 }
+//Time Complexity: O(log n)
+//Space Complexity: O(1)
+
+
 
 /* class Solution {
     public int binaryGap(int n) {
