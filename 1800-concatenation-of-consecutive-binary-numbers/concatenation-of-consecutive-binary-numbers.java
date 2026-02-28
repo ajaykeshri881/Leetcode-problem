@@ -1,6 +1,6 @@
 class Solution {
   public int concatenatedBinary(int n) {
-    final int MOD = 1000000007;
+    final int MOD = 1_000_000_007;
     long res = 0;
     int bits = 0;
     int nextPow = 1;
