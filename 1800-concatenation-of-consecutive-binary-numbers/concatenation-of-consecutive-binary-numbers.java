@@ -1,6 +1,27 @@
 class Solution {
   public int concatenatedBinary(int n) {
-    final int MOD = 1_000_000_007;
+    final int MOD = 1000000007;
+    long res = 0;
+    int bits = 0;
+    int nextPow = 1;
+
+    for (int i = 1; i <= n; i++) {
+
+      if (i == nextPow) {
+        bits++;
+        nextPow <<= 1;
+      }
+
+      res = ((res << bits) + i) % MOD;
+    }
+
+    return (int) res;
+  }
+}
+
+/* class Solution {
+  public int concatenatedBinary(int n) {
+    final int MOD = 1000000007;
     long ans = 0;
     int bitLength = 0;
 
@@ -14,7 +35,7 @@ class Solution {
 
     return (int) ans;
   }
-}
+} */
 
 
 // class Solution {
