@@ -1,5 +1,20 @@
 class Solution {
     public int minPartitions(String n) {
+        int maxDigit = 0;
+        
+        for (int i = 0; i < n.length(); i++) {
+            maxDigit = Math.max(maxDigit, n.charAt(i) - '0');
+            
+            if (maxDigit == 9) {
+                return 9; 
+            }
+        }
+        
+        return maxDigit;
+    }
+}
+/* class Solution {
+    public int minPartitions(String n) {
         int count = 0;
         char[] digits = n.toCharArray();
         
@@ -19,4 +34,4 @@ class Solution {
         
         return count;
     }
-}
+} */
