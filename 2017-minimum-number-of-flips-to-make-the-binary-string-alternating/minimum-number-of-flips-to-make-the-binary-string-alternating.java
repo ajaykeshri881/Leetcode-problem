@@ -12,7 +12,6 @@ class Solution {
             op[(s.charAt(i) ^ (n + i)) & 1]++;
             res = Math.min(res, Math.min(op[0], op[1]));
         }
-
         return res;
     }
 }
