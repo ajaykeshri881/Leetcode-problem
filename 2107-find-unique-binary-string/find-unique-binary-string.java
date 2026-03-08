@@ -1,5 +1,35 @@
 class Solution {
     public String findDifferentBinaryString(String[] nums) {
+        StringBuilder res = new StringBuilder();
+
+        for (int i = 0; i < nums.length; i++) {
+            res.append(nums[i].charAt(i) == '0' ? '1' : '0');
+        }
+
+        return res.toString();
+    }
+}
+
+
+/* class Solution {
+    public String findDifferentBinaryString(String[] nums) {
+        int n = nums.length;
+        StringBuilder ans = new StringBuilder();
+
+        for (int i = 0; i < n; i++) {
+            char c = nums[i].charAt(i);
+
+            if (c == '0')
+                ans.append('1');
+            else
+                ans.append('0');
+        }
+        return ans.toString();
+    }
+} */
+
+/* class Solution {
+    public String findDifferentBinaryString(String[] nums) {
         int n = nums.length;
         HashSet<String> set = new HashSet<>();
 
@@ -19,4 +49,4 @@ class Solution {
 
         return "";
     }
-}
+} */
