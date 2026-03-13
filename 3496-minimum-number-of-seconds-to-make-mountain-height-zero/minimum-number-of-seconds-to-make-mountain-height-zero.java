@@ -1,4 +1,3 @@
-
 class Solution {
     public long minNumberOfSeconds(int h, int[] t) {
 
