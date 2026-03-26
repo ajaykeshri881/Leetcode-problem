@@ -1,5 +1,4 @@
 class Solution {
-
     boolean canRemove(int r1, int c1, int r2, int c2, int i, int j) {
         int rows = r2 - r1 + 1;
         int cols = c2 - c1 + 1;
@@ -67,7 +66,6 @@ class Solution {
                 }
             }
         }
-
         for (int j = 0; j < m - 1; j++) {
             long left = prefCol[j];
             long right = total - left;
@@ -90,7 +88,6 @@ class Solution {
                 }
             }
         }
-
         return false;
     }
 }
