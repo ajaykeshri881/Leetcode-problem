@@ -10,7 +10,6 @@ class Solution {
                 ans = Math.min(ans, Math.min(clockwise, anticlockwise));
             }
         }
-
         return ans == Integer.MAX_VALUE ? -1 : ans;
     }
 }
