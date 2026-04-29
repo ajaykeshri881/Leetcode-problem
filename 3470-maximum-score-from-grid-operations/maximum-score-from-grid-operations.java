@@ -1,4 +1,3 @@
-
 class Solution {
     public long maximumScore(int[][] A) {
         int n = A.length;
