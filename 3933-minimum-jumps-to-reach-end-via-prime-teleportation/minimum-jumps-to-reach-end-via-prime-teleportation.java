@@ -58,7 +58,6 @@ class Solution {
             }
         }
 
-        // prime -> divisible indices
         HashMap<Integer, ArrayList<Integer>> mp = new HashMap<>();
 
         for(int i = 0; i < n; i++){
