@@ -8,8 +8,8 @@ class Solution {
         int sum=0;
         for(int j=0;j<m;j++){
             sum+=accounts[i][j];
-            max=Math.max(sum,max);
             }
+             max=Math.max(sum,max);
         }
         return max;
     }
