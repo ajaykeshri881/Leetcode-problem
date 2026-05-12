@@ -20,4 +20,5 @@ class Solution {
         for (int c : candies) total += c;
         return total;
     }
-}
+} 
+
