@@ -35,7 +35,7 @@ class Solution {
         int mid = l + (r - l) / 2;
 
         return Math.max(querySegTree(start, end, 2*i+1, l, mid),
-                        querySegTree(start, end, 2*i+2, mid+1, r));
+            querySegTree(start, end, 2*i+2, mid+1, r));
     }
 
     public List<Boolean> getResults(int[][] queries) {
