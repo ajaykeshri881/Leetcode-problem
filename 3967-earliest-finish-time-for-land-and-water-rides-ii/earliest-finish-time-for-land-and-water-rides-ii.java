@@ -1,6 +1,5 @@
 class Solution {
-    public int earliestFinishTime(int[] lst, int[] ldu,
-                                 int[] wst, int[] wdu) {
+    public int earliestFinishTime(int[] lst, int[] ldu,int[] wst, int[] wdu) {
 
         int ans = Integer.MAX_VALUE;
         int mln = Integer.MAX_VALUE;
