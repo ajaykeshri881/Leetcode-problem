@@ -8,7 +8,6 @@ class Solution {
             map.merge(num, 1, Integer::sum);
             max = Math.max(max, num);
         }
-
         if (map.containsKey(1)) {
             ans = map.get(1);
             if (ans % 2 == 0)
@@ -36,7 +35,6 @@ class Solution {
                     continue outer;
             }
         }
-
         return ans;
     }
 }
