@@ -19,7 +19,7 @@ while(lo<=hi){
             return arr[mid];
         } else if((mid%2==0 && arr[mid]==arr[mid-1]) || (mid%2!=0 && arr[mid]==arr[mid+1])){
             hi=mid-1;
-        }else if ((mid%2!=0 && arr[mid]==arr[mid-1]) || (mid%2==0 && arr[mid]==arr[mid+1])){
+        }else{
             lo=mid+1;
         }
 }
