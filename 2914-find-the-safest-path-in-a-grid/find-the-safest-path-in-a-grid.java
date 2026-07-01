@@ -5,7 +5,6 @@ class Solution {
     private void bfs(int[][] grid, int[][] score, int n) {
         Queue<int[]> queue = new LinkedList<>();
 
-        // Finding all thieves
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (grid[i][j] == 1) {
@@ -15,7 +14,6 @@ class Solution {
             }
         }
 
-        // Multi-source BFS
         while (!queue.isEmpty()) {
             int[] curr = queue.poll();
             int x = curr[0];
