@@ -16,9 +16,7 @@ class Solution {
         for (int i = 0; i < n; i++)
             if (indegree[i] == 0)
                 q.offer(i);
-
         ArrayList<Integer> topo = new ArrayList<>();
-
         while (!q.isEmpty()) {
             int u = q.poll();
             topo.add(u);
