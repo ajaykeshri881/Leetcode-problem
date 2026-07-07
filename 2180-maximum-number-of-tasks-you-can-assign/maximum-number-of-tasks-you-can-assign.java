@@ -1,108 +1,82 @@
-// class Solution {
-//     public int maxTaskAssign(int[] tasks, int[] workers, int pills, int strength) {
-//         Arrays.sort(tasks);
-//         Arrays.sort(workers);
-
-//         int low = 0, high = Math.min(tasks.length, workers.length);
-
-//         while (low < high) {
-//             int mid = low + (high - low + 1) / 2;
-
-//             if (canAssign(mid, tasks, workers, pills, strength)) {
-//                 low = mid;
-//             } else {
-//                 high = mid - 1;
-//             }
-//         }
-
-//         return low;
-//     }
-
-//     private boolean canAssign(int k, int[] tasks, int[] workers, int pills, int strength) {
-//         TreeMap<Integer, Integer> map = new TreeMap<>();
-
-//         for (int i = workers.length - k; i < workers.length; i++) {
-//             map.put(workers[i], map.getOrDefault(workers[i], 0) + 1);
-//         }
-
-//         int remainingPills = pills;
-
-//         for (int i = k - 1; i >= 0; i--) {
-//             int task = tasks[i];
-
-//             Integer worker = map.ceilingKey(task);
-
-//             if (worker != null) {
-//                 remove(map, worker);
-//             } else {
-//                 if (remainingPills == 0) return false;
-
-//                 worker = map.ceilingKey(task - strength);
-
-//                 if (worker == null) return false;
-
-//                 remove(map, worker);
-//                 remainingPills--;
-//             }
-//         }
-
-//         return true;
-//     }
-
-//     private void remove(TreeMap<Integer, Integer> map, int key) {
-//         int count = map.get(key);
-
-//         if (count == 1) {
-//             map.remove(key);
-//         } else {
-//             map.put(key, count - 1);
-//         }
-//     }
-// }
-
-
-
-
 class Solution {
+
+    int[] parent;
+
+    int find(int x) {
+        if (parent[x] == x) return x;
+        return parent[x] = find(parent[x]);
+    }
+
+    int lowerBound(int[] arr, int l, int r, int target) {
+        int ans = r + 1;
+        while (l <= r) {
+            int mid = l + (r - l) / 2;
+            if (arr[mid] >= target) {
+                ans = mid;
+                r = mid - 1;
+            } else {
+                l = mid + 1;
+            }
+        }
+        return ans;
+    }
+
     public int maxTaskAssign(int[] tasks, int[] workers, int pills, int strength) {
+
         Arrays.sort(tasks);
         Arrays.sort(workers);
 
-        int lo = 0, hi = Math.min(tasks.length, workers.length);
+        int low = 0;
+        int high = Math.min(tasks.length, workers.length);
+        int ans = 0;
 
-        while (lo < hi) {
-            int mid = (lo + hi + 1) >> 1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
 
-            if (can(tasks, workers, pills, strength, mid)) {
-                lo = mid;
+            if (canAssign(mid, tasks, workers, pills, strength)) {
+                ans = mid;
+                low = mid + 1;
             } else {
-                hi = mid - 1;
+                high = mid - 1;
             }
         }
 
-        return lo;
+        return ans;
     }
 
-    private boolean can(int[] tasks, int[] workers, int pills, int strength, int k) {
-        Deque<Integer> dq = new ArrayDeque<>();
-        int t = 0;
+    boolean canAssign(int k, int[] tasks, int[] workers, int pills, int strength) {
 
-        for (int w = workers.length - k; w < workers.length; w++) {
-            while (t < k && tasks[t] <= workers[w] + strength) {
-                dq.offerLast(tasks[t++]);
-            }
+        if (k == 0) return true;
 
-            if (dq.isEmpty()) return false;
+        int m = workers.length;
+        int offset = m - k;
+        int usedPills = 0;
 
-            if (dq.peekFirst() <= workers[w]) {
-                dq.pollFirst();
+        parent = new int[k + 1];
+        for (int i = 0; i <= k; i++)
+            parent[i] = i;
+
+        for (int i = k - 1; i >= 0; i--) {
+
+            int idx = lowerBound(workers, offset, m - 1, tasks[i]);
+            idx = find(idx - offset);
+
+            if (idx < k) {
+                parent[idx] = find(idx + 1);
             } else {
-                if (pills == 0) return false;
-                pills--;
-                dq.pollLast();
+
+                idx = lowerBound(workers, offset, m - 1, tasks[i] - strength);
+                idx = find(idx - offset);
+
+                if (idx < k) {
+                    usedPills++;
+                    parent[idx] = find(idx + 1);
+                } else {
+                    return false;
+                }
             }
         }
 
-        return true;
+        return usedPills <= pills;
     }
 }
