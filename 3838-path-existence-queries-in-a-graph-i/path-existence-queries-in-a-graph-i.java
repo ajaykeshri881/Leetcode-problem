@@ -19,7 +19,6 @@ class Solution {
             int v = queries[i][1];
             ans[i] = component[u] == component[v];
         }
-
         return ans;
     }
 }
