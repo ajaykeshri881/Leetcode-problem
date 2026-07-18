@@ -7,11 +7,14 @@ class Solution {
             max = Math.max(max, x);
             min = Math.min(min, x);
         }
+
+        //euclidean algorithm
         while(min!=0){
             int rem=max%min;
             max=min;
             min=rem;
         }
+
     return max;
     }
 }
