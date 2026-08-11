@@ -10,23 +10,21 @@ class Solution {
             }
         }
 
-        int x = sum;
-
         while (true) {
             boolean found = false;
 
-            for (int num : nums) {
-                if (num == x) {
+            for (int i = 0; i < nums.length; i++) {
+                if (nums[i] == sum) {
                     found = true;
                     break;
                 }
             }
 
             if (!found) {
-                return x;
+                return sum;
             }
 
-            x++;
+            sum++;
         }
     }
 }
