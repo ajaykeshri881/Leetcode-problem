@@ -3,28 +3,20 @@ class Solution {
         int sum = nums[0];
 
         for (int i = 1; i < nums.length; i++) {
-            if (nums[i] == nums[i - 1] + 1) {
+            if (nums[i] == nums[i - 1] + 1)
                 sum += nums[i];
-            } else {
+            else
                 break;
-            }
         }
 
-        while (true) {
-            boolean found = false;
+        boolean[] seen = new boolean[101];
 
-            for (int i = 0; i < nums.length; i++) {
-                if (nums[i] == sum) {
-                    found = true;
-                    break;
-                }
-            }
+        for (int num : nums)
+            seen[num] = true;
 
-            if (!found) {
-                return sum;
-            }
-
+        while (sum < seen.length && seen[sum])
             sum++;
-        }
+
+        return sum;
     }
 }
