@@ -5,7 +5,7 @@ class Solution {
         for (int i = 0; i < n; i++) prefix[i + 1] = prefix[i] + stoneValue[i];
 
         int[][] dp = new int[n][n];
-
+        
         for (int length = 2; length <= n; length++) {
             for (int i = 0; i + length - 1 < n; i++) {
                 int j = i + length - 1;
