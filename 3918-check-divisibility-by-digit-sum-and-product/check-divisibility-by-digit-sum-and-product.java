@@ -10,7 +10,6 @@ class Solution {
             digitProduct *= digit;
             n /= 10;
         }
-
         int divisor = digitSum + digitProduct;
         return original % divisor == 0;
     }
