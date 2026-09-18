@@ -9,14 +9,12 @@ class Solution {
         Arrays.fill(first, n);
         Arrays.fill(last, -1);
 
-        // Find first and last occurrence of each character
         for (int i = 0; i < n; i++) {
             int c = s.charAt(i) - 'a';
             first[c] = Math.min(first[c], i);
             last[c] = i;
         }
 
-        // Store valid intervals [start, end]
         List<int[]> intervals = new ArrayList<>();
 
         for (int c = 0; c < 26; c++) {
@@ -26,8 +24,6 @@ class Solution {
             int r = last[c];
             boolean valid = true;
 
-            // Expand interval if it contains another character
-            // whose complete range lies outside current interval.
             for (int i = l; i <= r; i++) {
                 int x = s.charAt(i) - 'a';
 
@@ -44,7 +40,7 @@ class Solution {
             }
         }
 
-        // Greedy: choose interval with smallest ending position
+       
         intervals.sort((a, b) -> Integer.compare(a[1], b[1]));
 
         int prevEnd = -1;
